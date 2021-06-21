@@ -16,7 +16,7 @@ char msg[50];
 int value = 0;
 const char* message = "P";
 long sendTime;
-long recibeTime;
+long arrivalTime;
 int LED_BUILTIN = 2;
 bool messageSended = false;
 int counter = 1;
@@ -100,9 +100,9 @@ void callback(char* topic, byte* message, unsigned int length) {
   Serial.println();
 
   if (String(topic) == "esp32/output") {
-    recibeTime = millis();
+    arrivalTime = millis();
     Serial.print("Se tardo: ");
-    long latency = recibeTime - sendTime;
+    long latency = arrivalTime - sendTime;
     Serial.print(latency);
     Serial.println("ms");
 
